@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
 import cors from "cors"
+import data from "./data.js";
 
 dotenv.config();
 const app = express();
@@ -26,11 +27,13 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.get('/api/products', productRouter);
 app.get('/api/users', userRouter);
 app.get('/', );
-
+app.get("/api/products", (req, res) => {
+	res.send(data.products)
+})
 
 
 app.get('/', (req, res) => {
-	res.send("server is ready");
+	res.send("Noddejs Backend Server Is Ready");
 });
 
 
