@@ -27,9 +27,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.get('/api/products', productRouter);
 app.get('/api/users', userRouter);
 app.get('/', );
-app.get("/api/products", (req, res) => {
-	res.send(data.products)
-})
+// app.get("/api/products", (req, res) => {
+// 	res.send(data.products)
+// })
 
 
 app.get('/', (req, res) => {
