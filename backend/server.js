@@ -3,12 +3,13 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRouter from './routers/userRouter.js';
 import productRouter from './routers/productRouter.js';
-
+import cors from "cors"
 
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
 mongoose.connect(process.env.MONGODB_URI, {
 	useNewUrlParser: true,
@@ -24,11 +25,15 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.get('/api/products', productRouter);
 app.get('/api/users', userRouter);
-app.get('/', )
+app.get('/', );
+
+
 
 app.get('/', (req, res) => {
 	res.send("server is ready");
 });
+
+
 
 const port = process.env.PORT || 4000;
 
